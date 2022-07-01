@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, Image, TouchableOpacity} from 'react-native'
-import Torch from 'react-native-torch'
-import RNShake from 'react-native-shake'
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import Torch from 'react-native-torch';
+import RNShake from 'react-native-shake';
 
-const app = () => {
+const App = () => {
   const [toggle, setToggle] = useState(false);
-
   const handleChangeToggle = () => setToggle(oldToggle => !oldToggle);
 
   useEffect(() => {
@@ -20,12 +19,11 @@ const app = () => {
     });
 
     return () => subscription.remove();
-  }, [toggle]);
- 
+  }, []);
 
-  return <View style={toggle ? style.containerLight : style.container}>
+  return (<View style={toggle ? style.containerLight : style.container}>
     <TouchableOpacity onPress = {handleChangeToggle} />
-    <Image 
+    <Image
     style={toggle ? style.lightingOn : style.lightingOff}
     source={
       toggle
@@ -33,20 +31,20 @@ const app = () => {
       : require('.assets/icons/eco-light-off.png')
       }/>
 
-  <Image 
+  <Image
     style={style.dioLogo}
     source={
       toggle
       ? require('.assets/icons/logo-dio-white.png')
       : require('.assets/icons/logo-dio.png')
       }/>
-    </View>;
-}
+    </View>);
+};
 
 export default App;
 
 const style = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     backgroundColor: 'black',
     alignItems: 'center',
@@ -62,13 +60,13 @@ const style = StyleSheet.create({
     resiseMode : 'contain',
     alignSelf: 'center',
     width: 150,
-    height: 150
+    height: 150,
   },
   lightingOff:{
     resiseMode : 'contain',
     alignSelf: 'center',
     width: 150,
-    height: 150
+    height: 150,
   },
 
   dioLogo:{
@@ -76,6 +74,6 @@ const style = StyleSheet.create({
     alignSelf: 'center',
     tintColor: 'white',
     width: 150,
-    height: 150
-  }
+    height: 150,
+  },
 });
